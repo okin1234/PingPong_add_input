@@ -1,9 +1,10 @@
 import json
 
 class PingPong:
-  def __init__(self, ping, pong):
+  def __init__(self, ping, pong, input=None):
     self.ping = ping
     self.pong = pong
+    self.input = input
 
   def __repr__(self):
     return json.dumps(self, default=lambda o: o.__dict__)

@@ -16,6 +16,9 @@ class AlpacaPromptFmt(PromptFmt):
     return f"""### Instruction:
 {pingpong.ping[:truncate_size]}
 
+### Input:
+{"" if pingpong.input is None else pingpong.input[:truncate_size]}
+
 ### Response:
 {"" if pingpong.pong is None else pingpong.pong[:truncate_size]}"""
 

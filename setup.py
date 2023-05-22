@@ -11,7 +11,7 @@ setup(
     long_description_content_type="text/markdown",
     author='chansung park',
     author_email='deep.diver.csp@gmail.com',
-    url='https://github.com/deep-diver/PingPong',
+    url='https://github.com/okin1234/PingPong_add_input/blob/add_input',
     install_requires=[],
     packages=['pingpong', 'pingpong.context'],
     package_dir={'':'src'},
