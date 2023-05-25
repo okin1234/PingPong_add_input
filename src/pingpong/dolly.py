@@ -14,7 +14,7 @@ class DollyPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = {"" if pingpong.input is None else f"### Input: \n{pingpong.input[:truncate_size]}\n"}
+    input = {"" if pingpong.input is None or pingpong.input == "" else f"### Input: \n{pingpong.input[:truncate_size]}\n"}
     return f"""
 {input}
   
@@ -22,7 +22,7 @@ class DollyPromptFmt(PromptFmt):
 {pingpong.ping[:truncate_size]}
 
 ### Response:
-{"" if pingpong.pong is None else pingpong.pong[:truncate_size]}"""
+{"" if pingpong.pong is None or pingpong.pong == "" else pingpong.pong[:truncate_size]}"""
 
 class DollyChatPPManager(PPManager):
   def add_ping(self, ping, fmt: PromptFmt=DollyPromptFmt):

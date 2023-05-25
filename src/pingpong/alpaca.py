@@ -13,7 +13,7 @@ class AlpacaPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = {"" if pingpong.input is None else f"### Input:\n{pingpong.input[:truncate_size]}\n"}
+    input = {"" if pingpong.input is None or pingpong.input == "" else f"### Input:\n{pingpong.input[:truncate_size]}\n"}
     return f"""
 {input}
   
@@ -21,7 +21,7 @@ class AlpacaPromptFmt(PromptFmt):
 {pingpong.ping[:truncate_size]}
 
 ### Response:
-{"" if pingpong.pong is None else pingpong.pong[:truncate_size]}"""
+{"" if pingpong.pong is None or pingpong.pong == "" else pingpong.pong[:truncate_size]}"""
 
 class AlpacaChatPPManager(PPManager):
   def build_prompts(self, from_idx: int=0, to_idx: int=-1, fmt: PromptFmt=AlpacaPromptFmt, truncate_size: int=None):

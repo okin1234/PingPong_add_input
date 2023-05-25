@@ -13,9 +13,9 @@ class OSStableLMPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = "" if pingpong.input is None else f"<|input|>{pingpong.input[:truncate_size]}<|endoftext|>"
+    input = "" if pingpong.input is None or pingpong.input == "" else f"<|input|>{pingpong.input[:truncate_size]}<|endoftext|>"
     ping = pingpong.ping[:truncate_size]
-    pong = "" if pingpong.pong is None else pingpong.pong[:truncate_size]
+    pong = "" if pingpong.pong is None or pingpong.pong == "" else pingpong.pong[:truncate_size]
     return f"{input}<|prompter|>{ping}<|endoftext|><|assistant|>{pong}"
 
 class OSStableLMChatPPManager(PPManager):
