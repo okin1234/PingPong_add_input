@@ -13,7 +13,7 @@ class MPTChatPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = "" if pingpong.input is None or pingpong.input == "" else f"<|im_start|>input{pingpong.input[:truncate_size]}<|im_end|>\n"
+    input = "" if pingpong.input is None or pingpong.input == "" else f"<|im_start|>input{pingpong.input[:truncate_size]}<|im_end|>"
     ping = pingpong.ping[:truncate_size]
     pong = "" if pingpong.pong is None or pingpong.pong == "" else f"{pingpong.pong[:truncate_size]}<|im_end|>\n"
     return f"""
