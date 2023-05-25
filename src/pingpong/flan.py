@@ -13,9 +13,9 @@ class FlanAlpacaPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
+    input = {"" if pingpong.input is None else f"{pingpong.input[:truncate_size]}\n-----\n"}
     return f"""
-{"" if pingpong.input is None else pingpong.input[:truncate_size]}
------
+{input}
 {pingpong.ping[:truncate_size]}
 -----
 {"" if pingpong.pong is None else pingpong.pong[:truncate_size]}"""
