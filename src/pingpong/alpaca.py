@@ -13,7 +13,7 @@ class AlpacaPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = {"" if pingpong.input is None or pingpong.input == "" else f"### Input:\n{pingpong.input[:truncate_size]}"}
+    input = "" if pingpong.input is None or pingpong.input == "" else f"### Input:\n{pingpong.input[:truncate_size]}"
     return f"""
 {input}
   
