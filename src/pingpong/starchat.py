@@ -13,9 +13,12 @@ class StarChatPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
+    input = "" if pingpong.input is None or pingpong.input == "" else f"{pingpong.input[:truncate_size]}"
     ping = pingpong.ping[:truncate_size]
     pong = "" if pingpong.pong is None or pingpong.pong == "" else f"{pingpong.pong[:truncate_size]}<|end|>\n"
-    return f"""<|user|>{ping}<|end|>
+    return f"""
+<|input|>{input}<|end|>\n
+<|user|>{ping}<|end|>\n
 <|assistant|>{pong}"""
 
 class StarChatPPManager(PPManager):

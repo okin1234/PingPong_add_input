@@ -13,11 +13,14 @@ class MPTChatPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
+    input = "" if pingpong.input is None or pingpong.input == "" else f"{pingpong.input[:truncate_size]}\n"
     ping = pingpong.ping[:truncate_size]
     pong = "" if pingpong.pong is None or pingpong.pong == "" else f"{pingpong.pong[:truncate_size]}<|im_end|>\n"
-    return f"""<|im_start|>user
-{ping}<|im_end|>assistant<|im_start|>
-{pong}"""
+    return f"""
+<|im_start|>user{input}<|im_end|>
+<|im_start|>user{ping}<|im_end|>
+<|im_start|>assistant{pong}
+"""
 
 class MPTChatPPManager(PPManager):
   def build_prompts(self, from_idx: int=0, to_idx: int=-1, fmt: PromptFmt=MPTChatPromptFmt, truncate_size: int=None):

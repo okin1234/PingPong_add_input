@@ -13,9 +13,12 @@ class RedPajamaChatPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
+    input = "" if pingpong.input is None or pingpong.input == "" else f"{pingpong.input[:truncate_size]}"
     ping = pingpong.ping[:truncate_size]
     pong = "" if pingpong.pong is None or pingpong.pong == "" else f"{pingpong.pong[:truncate_size]}<|end|>\n"
-    return f"""<human>: {ping}
+    return f"""
+<input>: {input}
+<human>: {ping}
 <bot>: {pong}"""
 
 class RedPajamaChatPPManager(PPManager):

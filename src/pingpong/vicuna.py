@@ -13,9 +13,12 @@ class VicunaPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
+    input = "" if pingpong.input is None else pingpong.input[:truncate_size]
     ping = pingpong.ping[:truncate_size]
     pong = "" if pingpong.pong is None else pingpong.pong[:truncate_size]
-    return f"""USER: {ping}
+    return f"""
+INPUT: {input}
+USER: {ping}
 ASSISTANT: {pong}
 """
 
