@@ -2,6 +2,9 @@ import json
 
 class PingPong:
   def __init__(self, ping, pong, input=None):
+    # input : context for data extract
+    # ping : user question
+    # pong : assistant answer
     self.ping = ping
     self.pong = pong
     self.input = input
