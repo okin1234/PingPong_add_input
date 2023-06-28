@@ -5,8 +5,8 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name='bingbong',
-    version='0.2.7',
-    description='Ping pong management library for LLM applied application',
+    version='0.3.2',
+    description='Ping pong is a management library for LLM applied applications.',
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='chansung park',
@@ -16,7 +16,7 @@ setup(
     packages=['pingpong', 'pingpong.context'],
     package_dir={'':'src'},
     keywords=['LLM', 'pingpong', 'prompt', 'context', 'management'],
-    python_reuqires='>=3.8',
+    python_requires='>=3.8',
     package_data={},
     zip_safe=False,
     classifiers=[
