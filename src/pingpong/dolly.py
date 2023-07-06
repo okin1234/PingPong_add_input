@@ -14,13 +14,10 @@ class DollyPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = "" if pingpong.input is None or pingpong.input == "" else f"### Context: \n{pingpong.input[:truncate_size]}"
-    return f"""
-{input}
-  
-### Instruction:
+    input = "" if pingpong.input is None or pingpong.input == "" else f"### Input: \n{pingpong.input[:truncate_size]}"
+    return f"""  ### Instruction:
 {pingpong.ping[:truncate_size]}
-
+{input}
 ### Response:
 {"" if pingpong.pong is None or pingpong.pong == "" else pingpong.pong[:truncate_size]}"""
 

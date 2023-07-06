@@ -13,13 +13,10 @@ class KoAlpacaPromptFmt(PromptFmt):
 
   @classmethod
   def prompt(cls, pingpong, truncate_size):
-    input = "" if pingpong.input is None or pingpong.input == "" else f"### 본문: \n{pingpong.input[:truncate_size]}"
-    return f"""  
-{input}
-
-### 질문:
+    input = "" if pingpong.input is None or pingpong.input == "" else f"### 인풋: \n{pingpong.input[:truncate_size]}"
+    return f"""### 질문:
 {pingpong.ping[:truncate_size]}
-
+{input}
 ### 응답:
 {"" if pingpong.pong is None or pingpong.pong == "" else pingpong.pong[:truncate_size]}"""
 

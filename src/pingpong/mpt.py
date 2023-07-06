@@ -17,8 +17,8 @@ class MPTChatPromptFmt(PromptFmt):
     ping = pingpong.ping[:truncate_size]
     pong = "" if pingpong.pong is None or pingpong.pong == "" else f"{pingpong.pong[:truncate_size]}<|im_end|>\n"
     return f"""
-{input}
 <|im_start|>user{ping}<|im_end|>
+{input}
 <|im_start|>assistant{pong}
 """
 
