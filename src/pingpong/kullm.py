@@ -15,8 +15,10 @@ class KULLMPromptFmt(PromptFmt):
 	def prompt(cls, pingpong, truncate_size):
 		ping = pingpong.ping[:truncate_size]
 		pong = "" if pingpong.pong is None else pingpong.pong[:truncate_size]
+		input = "" if pingpong.input is None or pingpong.input == "" else f"### 인풋:\n{pingpong.input[:truncate_size]}"
 		return f"""### 명령어:
 {ping}
+{input}
 ### 응답:
 {pong}
 """

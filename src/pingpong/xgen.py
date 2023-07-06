@@ -16,7 +16,9 @@ class XGenChatPromptFmt(PromptFmt):
 	def prompt(cls, pingpong, truncate_size):
 		ping = pingpong.ping[:truncate_size]
 		pong = "" if pingpong.pong is None else pingpong.pong[:truncate_size]
+		input = "" if pingpong.input is None or pingpong.input == "" else f"### Input: {pingpong.input[:truncate_size]}"
 		return f"""### Human: {ping}
+{input}
 ###{pong}
 """
     
